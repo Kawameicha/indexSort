@@ -1,11 +1,12 @@
 Package: indexSort
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Retrieve index sorted data and visually explore .fcs date files.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Christoph Freier
+Maintainer: The package maintainer <christoph@freier.fr>
+Description: This package contains functions to retrieve index sorted data and visually explore .fcs date files from various cell sorter.
+License: Apache License 2.0
 Encoding: UTF-8
 LazyData: true
+Imports: 
+  tidyverse

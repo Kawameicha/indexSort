@@ -22,7 +22,7 @@ devtools::install_github("Kawameicha/indexSort")
 
 ## Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](https://github.com/Kawameicha/indexSort/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/Kawameicha/indexSort/issues).
+This project is released with a [Code of Conduct](https://github.com/Kawameicha/indexSort/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/Kawameicha/indexSort/issues).
 
 ## License
 

@@ -5,7 +5,7 @@
 retrieve_index()
 }
 \description{
-This function retrieves index sorted data from various cell sorter.
+This function retrieves index sorted data from various cell sorters.
 }
 \examples{
 retrieve_index()

@@ -1,6 +1,6 @@
 #' Retrieve Index Sorted Data for a Given Cell Sorter
 #'
-#' This function retrieves index sorted data from various cell sorter.
+#' This function retrieves index sorted data from various cell sorters.
 #'
 #' @param data A index sorted .fcs file
 #' @param sorter A cell sorter, not used

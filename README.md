@@ -6,7 +6,7 @@ This package contains functions to retrieve index sorted data and visually explo
 
 ## Installation
 
-You can install the development version from GitHub with [`devtools`](https://github.com/r-lib/devtools):
+You can install the development version from GitHub with `devtools`:
 
 ``` r
 install.packages("devtools")
@@ -19,6 +19,9 @@ devtools::install_github("Kawameicha/indexSort")
   * BD FACSAriaIII<sup>TM</sup>
   * BD FACSAria Fusion<sup>TM</sup>
   * BD FACSymphony S6<sup>TM</sup>
+* Plot data with `explore_plate()` to visualize the number of cells per well.
+
+![](./explore_plate.png)
 
 ## Community Guidelines
 

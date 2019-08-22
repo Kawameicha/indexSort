@@ -1,6 +1,6 @@
 Package: indexSort
 Type: Package
-Title: Retrieve index sorted data and visually explore .fcs date files.
+Title: Retrieve Index Sorted Data and Visually Explore .fcs Date Files.
 Version: 0.1.0
 Author: Christoph Freier
 Maintainer: The package maintainer <christoph@freier.fr>

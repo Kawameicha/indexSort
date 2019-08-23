@@ -23,9 +23,7 @@ devtools::install_github("Kawameicha/indexSort")
   * BD FACSJazz<sup>TM</sup>
 * Plot result with `explore_plate()` and visualize the number of cells per well.
 
-<p align="center">
 ![](./explore_plate.png)
-</p>
 
 ## Community Guidelines
 

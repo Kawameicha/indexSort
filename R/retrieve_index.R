@@ -48,13 +48,27 @@ retrieve_index <- function(data, sorter = "aria", ...) {
       
       # 2.3. Generate result 
       result <- data.frame(inputFCS@exprs) %>%
-        mutate_at(vars(starts_with("Tray")), function(x) round(x/100)) %>% 
+        mutate_at(vars(starts_with("Tray")), function(x) round(x / 100)) %>% 
         left_join(., indSor, all.x = TRUE) %>% 
         mutate(IdxRow = gsub("([[:alpha:]])([0-9]?[0-9])", "\\1", Well),
                IdxCol = gsub("([[:alpha:]])([0-9]?[0-9])", "\\2", Well)) %>% 
-        mutate(IdxCol, IdxCol = formatC((as.numeric(IdxCol)), width = 2, flag = 0))
+        mutate(IdxCol, IdxCol = formatC((as.numeric(IdxCol)), width = 2, flag = 0)) %>% 
+        select(IdxRow, IdxCol, everything(), -Well)
       
-    } 
+    } else if (sorter %in% c("astrios")) {
+      
+      # Generate results
+      result <- data.frame(inputFCS@exprs) %>% 
+        mutate(bits   = lapply(Sort.Classifier, function(x) as.numeric(intToBits(x))),
+               IdxRow = sapply(bits, function(x) sum(x[27], x[28]*2, x[29]*4 + x[30]*8 + x[31]*16 + x[32]*32)),
+               IdxCol = sapply(bits, function(x) sum(x[21], x[22]*2, x[23]*4 + x[24]*8 + x[25]*16 + x[26]*32))) %>%
+        mutate(IdxRow = rawToChar(as.raw(64 + as.integer(.[, "IdxRow"])), multiple = TRUE)) %>%
+        mutate(IdxCol = formatC((IdxCol), width = 2, flag = 0)) %>%
+        mutate(IdxRow = ifelse(IdxRow == "@", NA_real_,  IdxRow)) %>%
+        mutate(IdxCol = ifelse(IdxCol == "00", NA_real_,  IdxCol)) %>% 
+        select(IdxRow, IdxCol, everything(), -bits)
+      
+    }
   
   return(result) 
   

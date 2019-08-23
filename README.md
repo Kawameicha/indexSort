@@ -21,6 +21,7 @@ devtools::install_github("Kawameicha/indexSort")
   * BD FACSymphony S6<sup>TM</sup>
   * BD Influx<sup>TM</sup>
   * BD FACSJazz<sup>TM</sup>
+  * MoFlo Astrios</sup>
 * Plot result with `explore_plate()` and visualize the number of cells per well.
 
 ![](./explore_plate.png)

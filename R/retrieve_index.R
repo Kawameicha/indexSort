@@ -46,7 +46,7 @@ retrieve_index <- function(data, sorter = "aria", ...) {
         mutate_if(is.numeric, function(x) round(x/100)) %>% 
         mutate(Sort.Result.Bits = 32769)
       
-      # 2.3. Generate result 
+      # 2.2. Generate result 
       result <- data.frame(inputFCS@exprs) %>%
         mutate_at(vars(starts_with("Tray")), function(x) round(x / 100)) %>% 
         left_join(., indSor, all.x = TRUE) %>% 
@@ -57,7 +57,7 @@ retrieve_index <- function(data, sorter = "aria", ...) {
       
     } else if (sorter %in% c("astrios")) {
       
-      # Generate results
+      # 3.1. Generate result
       result <- data.frame(inputFCS@exprs) %>% 
         mutate(bits   = lapply(Sort.Classifier, function(x) as.numeric(intToBits(x))),
                IdxRow = sapply(bits, function(x) sum(x[27], x[28]*2, x[29]*4 + x[30]*8 + x[31]*16 + x[32]*32)),

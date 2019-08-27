@@ -22,11 +22,9 @@ explore_plate <- function(data, vars = c("IdxRow", "IdxCol"), cell = TRUE, dim =
   # 2. Cell number
   cellNb <- data %>%
     select(IdxRow, IdxCol) %>% 
-    mutate(Well = paste0(IdxRow, IdxCol)) %>% 
-    group_by(Well, IdxRow, IdxCol) %>% 
+    group_by(IdxRow, IdxCol) %>% 
     tally %>% 
-    ungroup %>% 
-    select(-Well)
+    ungroup
   
   # 3. Plate visual
   result <- data %>%

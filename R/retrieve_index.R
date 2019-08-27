@@ -28,7 +28,7 @@ retrieve_index <- function(data, sorter = "aria", ...) {
                          IdxCol = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\2", indSor[indSor != ""]))) %>% 
       mutate(IdxRow, IdxRow = rawToChar(as.raw(65 + as.integer(.[, "IdxRow"])), multiple = TRUE)) %>% 
       mutate(IdxCol, IdxCol = formatC((IdxCol + 1), width = 2, flag = 0)) %>% 
-      cbind(., data.frame(inputFCS@exprs)) 
+      bind_cols(., data.frame(data@exprs)) 
     
     } else if (sorter %in% c("influx", "jazz")) { 
       

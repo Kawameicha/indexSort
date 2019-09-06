@@ -39,6 +39,7 @@ explore_plate <- function(data, vars = c("IdxRow", "IdxCol"), cell = TRUE, dim =
     {if (cell == TRUE) geom_text(aes(label = n, alpha = .25))} +
     scale_y_discrete(limits = rev(LETTERS[1:dim[1]])) +
     scale_x_continuous(breaks = seq(1, dim[2])) +
+    scale_colour_gradient(low = "#8acf81", high = "#ef5534") +
     theme_bw() +
     theme(legend.position = "none",
           panel.grid.minor = element_blank(),
@@ -47,7 +48,7 @@ explore_plate <- function(data, vars = c("IdxRow", "IdxCol"), cell = TRUE, dim =
     labs(x = element_blank(), 
          y = element_blank(),
          title = "Median Fluorescence per Well",
-         caption = "indexSort v.0.1.1") +
+         caption = "indexSort v.0.1.2") +
     facet_wrap(~key, ncol = 2)
   
   return(result)

@@ -26,6 +26,18 @@ devtools::install_github("Kawameicha/indexSort")
 
 ![](./explore_plate.png)
 
+## Usage 
+
+``` r
+library(tidyverse)
+library(flowCore)
+library(indexSort)
+
+inputFCS <- read.FCS("~/path/to/file.fcs")
+result <- retrieve_index(inputFCS)
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A", "Time"))
+```
+
 ## Community Guidelines
 
 This project is released with a [Code of Conduct](https://github.com/Kawameicha/indexSort/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/Kawameicha/indexSort/issues).

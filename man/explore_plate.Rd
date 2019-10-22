@@ -16,6 +16,10 @@ explore_plate(data, vars = c("IdxRow", "IdxCol"), cell = TRUE, dim = c(8, 12), .
 
 \item{dim}{A list of two dimensions for the plate.}
 
+\item{legend}{Should fluorescence legend be displayed.}
+
+\item{circle}{Allows to change the wells' size}
+
 \item{...}{Extra arguments, not used}
 }
 \examples{

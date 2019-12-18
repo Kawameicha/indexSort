@@ -1,18 +1,32 @@
-#' Retrieve Index Sorted Data for a Given Cell Sorter
+#' @title Retrieve Index Sorted Data for a Given Cell Sorter
 #'
-#' This function retrieves index sorted data from various cell sorters.
+#' @description The `retrieve_index` was designed in order to give 
+#' researchers the ability to automatically gate wells from .fcs data 
+#' generated using various cell sorters. It will generate parameters 
+#' corresponding to the `x` and `y` axes (IdxRow and IdxCol).
 #'
-#' @param data A index sorted .fcs file
-#' @param sorter A given cell sorter
+#' @param data An index sorted .fcs file
+#' @param sorter Specify the cell sorter. Possible values are `aria`,  
+#' `symphony`, `influx`, `jazz`, `astrios`.
 #' @param ... Extra arguments, not used
 #'
-#' @return NULL
+#' @return A `data.frame` object
 #'
 #' @examples
+#' library(flowCore)
+#' 
+#' inputFCS <- read.FCS("~/path/to/file.fcs")
+#' 
+#' # Retrieve indexed data from an Aria
+#' result <- retrieve_index(inputFCS)
+#' 
+#' # Retrieve data from another sorter
+#' result <- retrieve_index(inputFCS, sorter = "influx")
 #'
-#' @export result
+#' @export 
 
-retrieve_index <- function(data, sorter = "aria", ...) {
+retrieve_index <- function(data,
+                           sorter = "aria", ...) {
   
   if (sorter %in% c("aria", "symphony")) { 
     

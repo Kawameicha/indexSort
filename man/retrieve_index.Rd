@@ -7,15 +7,31 @@
 retrieve_index(data, sorter = "aria", ...)
 }
 \arguments{
-\item{data}{A index sorted .fcs file}
+\item{data}{An index sorted .fcs file}
 
-\item{sorter}{A given cell sorter}
+\item{sorter}{Specify the cell sorter. Possible values are `aria`,
+`symphony`, `influx`, `jazz`, `astrios`.}
 
 \item{...}{Extra arguments, not used}
 }
+\value{
+A `data.frame` object
+}
 \description{
-This function retrieves index sorted data from various cell sorters.
+The `retrieve_index` was designed in order to give 
+researchers the ability to automatically gate wells from .fcs data 
+generated using various cell sorters. It will generate parameters 
+corresponding to the `x` and `y` axes (IdxRow and IdxCol).
 }
 \examples{
+library(flowCore)
+
+inputFCS <- read.FCS("~/path/to/file.fcs")
+
+# Retrieve indexed data from an Aria
+result <- retrieve_index(inputFCS)
+
+# Retrieve data from another sorter
+result <- retrieve_index(inputFCS, sorter = "influx")
 
 }

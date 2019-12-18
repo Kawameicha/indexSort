@@ -5,7 +5,6 @@
 #' the selected parameters. Additionally, the number of cells will be displayed 
 #' for each well.
 #'
-#'
 #' @param data An indexed `data.frame` or `tibble` object
 #' @param vars Features to be displayed as MFI
 #' @param cell Display or not cell number values

@@ -15,23 +15,42 @@ explore_plate(
 )
 }
 \arguments{
-\item{data}{A index sorted .fcs file}
+\item{data}{An indexed `data.frame` or `tibble` object}
 
-\item{vars}{Features to be used}
+\item{vars}{Features to be displayed as MFI}
 
-\item{cell}{Display cell number values}
+\item{cell}{Display or not cell number values}
 
 \item{dim}{A plate's dimension c(x, y)}
 
-\item{legend}{Display fluorescence legend}
+\item{legend}{Display or not fluorescence legend}
 
-\item{circle}{Change wells' size}
+\item{circle}{Size of the wells on illustration}
 
 \item{...}{Extra arguments, not used}
 }
+\value{
+A `ggplot` object
+}
 \description{
-This function plots a plate visual from index sorted data.
+The `explore_plate` is used to generate a set of illustrations 
+that automatically display the Median Fluorescent Intensity (MFI) per well for 
+the selected parameters. Additionally, the number of cells will be displayed 
+for each well.
 }
 \examples{
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A"))
+
+# Remove cell number values
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A"), cell = FALSE)
+
+# Change plate dimension
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A"), dim = c(16, 24))
+
+# Remove the legend
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A"), legend = FALSE)
+
+# Adapt wells' size
+explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A"), circle = 8)
 
 }

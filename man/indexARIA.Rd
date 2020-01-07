@@ -17,7 +17,7 @@
   ...
 }}
 \source{
-personal work
+Handcrafted, personal work
 }
 \usage{
 indexARIA

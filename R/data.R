@@ -15,7 +15,7 @@
 #'   \item{$`$CYT`}{cytometer keyword}
 #'   ...
 #' }
-#' @source personal work
+#' @source Handcrafted, personal work
 "inputARIA"
 
 #' Indexed values of 96 cells.
@@ -34,5 +34,5 @@
 #'   \item{PI}{propidium iodide}
 #'   ...
 #' }
-#' @source personal work
+#' @source Handcrafted, personal work
 "indexARIA"

@@ -156,8 +156,7 @@ explore_plate <- function(data,
           strip.background = element_blank(),
           axis.title       = element_blank()) +
     {if (legend == FALSE) theme(legend.position = "none")} +
-    labs(title   = "Median Fluorescence per Well",
-         caption = "indexSort v.0.1.3") +
+    labs(title   = "Median Fluorescence per Well") +
     facet_wrap(~key, ncol = 2)
   
   return(result)

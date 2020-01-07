@@ -3,6 +3,7 @@
 .Rapp.history
 .DS_Store
 indexSort.Rproj
+CODE_OF_CONDUCT.md
 
 # Session Data files
 .RData

@@ -22,7 +22,12 @@
 #' # Retrieve data from specific sorter
 #' result <- retrieve_index(inputARIA, sorter = "aria")
 #' 
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom magrittr %>%
 #' @importFrom stats median
+#' @importFrom stringr str_split
+#' @importFrom tidyr pivot_longer
 #'
 #' @export
 

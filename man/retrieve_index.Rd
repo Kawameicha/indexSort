@@ -18,9 +18,9 @@ retrieve_index(data, sorter = "aria", ...)
 A `data.frame` object
 }
 \description{
-The `retrieve_index` was designed in order to give 
-researchers the ability to automatically gate wells from .fcs data 
-generated using various cell sorters. It will generate parameters 
+The `retrieve_index` was designed in order to give  
+researchers the ability to automatically gate wells from .fcs data  
+generated using various cell sorters. It will generate parameters  
 corresponding to the `x` and `y` axes (IdxRow and IdxCol).
 }
 \examples{

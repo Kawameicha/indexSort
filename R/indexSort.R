@@ -1,8 +1,8 @@
 #' @title Retrieve Index Sorted Data for a Given Cell Sorter
 #'
-#' @description The `retrieve_index` was designed in order to give 
-#' researchers the ability to automatically gate wells from .fcs data 
-#' generated using various cell sorters. It will generate parameters 
+#' @description The `retrieve_index` was designed in order to give  
+#' researchers the ability to automatically gate wells from .fcs data  
+#' generated using various cell sorters. It will generate parameters  
 #' corresponding to the `x` and `y` axes (IdxRow and IdxCol).
 #'
 #' @param data An index sorted .fcs file
@@ -21,8 +21,10 @@
 #' 
 #' # Retrieve data from specific sorter
 #' result <- retrieve_index(inputARIA, sorter = "aria")
+#' 
+#' @importFrom stats median
 #'
-#' @export 
+#' @export
 
 retrieve_index <- function(data,
                            sorter = "aria", ...) {
@@ -156,7 +158,7 @@ explore_plate <- function(data,
           strip.background = element_blank(),
           axis.title       = element_blank()) +
     {if (legend == FALSE) theme(legend.position = "none")} +
-    labs(title   = "Median Fluorescence per Well") +
+    labs(title = "Median Fluorescence per Well") +
     facet_wrap(~key, ncol = 2)
   
   return(result)

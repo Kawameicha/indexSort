@@ -23,16 +23,20 @@
 #' result <- retrieve_index(inputARIA, sorter = "aria")
 #' 
 #' @import dplyr
-#' @import ggplot2
 #' @importFrom magrittr %>%
-#' @importFrom stats median
 #' @importFrom stringr str_split
-#' @importFrom tidyr pivot_longer
 #'
 #' @export
 
 retrieve_index <- function(data,
                            sorter = "aria", ...) {
+  
+  if (!class(data) == "flowFrame")
+    stop("data should be a flowframe.")
+  if (is.null(data@description$`$CYT`) == TRUE & sorter == "auto")
+    stop("CYT is missing, select one.")
+  if (!sorter %in% c("auto", "aria", "symphony", "influx", "jazz", "astrios"))
+    stop("sorter isn't a valid value.")
   
   if (sorter %in% c("aria", "symphony")) { 
     
@@ -101,8 +105,8 @@ retrieve_index <- function(data,
 #' the selected parameters. Additionally, the number of cells will be displayed 
 #' for each well.
 #'
-#' @param data An indexed `data.frame` or `tibble` object
-#' @param vars Features to be displayed as MFI
+#' @param data An indexed `data.frame` object
+#' @param param Features to be displayed as MFI
 #' @param cell Display or not cell number values
 #' @param dim A plate's dimension c(x, y)
 #' @param legend Display or not fluorescence legend
@@ -114,19 +118,32 @@ retrieve_index <- function(data,
 #' @examples 
 #' library(tidyverse)
 #' 
-#' explore_plate(indexARIA, vars = c("APC", "FITC", "PerCP", "PI"))
+#' explore_plate(indexARIA, param = c("APC", "FITC", "PerCP", "PI"))
 #' 
 #' # Remove the legend
-#' explore_plate(indexARIA, vars = c("APC", "FITC", "PerCP", "PI"), legend = FALSE)
+#' explore_plate(indexARIA, param = c("APC", "FITC", "PerCP", "PI"), legend = FALSE)
+#'
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom magrittr %>%
+#' @importFrom stats median
+#' @importFrom tidyr pivot_longer
 #'
 #' @export 
 
 explore_plate <- function(data,
-                          vars   = c("IdxRow", "IdxCol"),
+                          param  = c("APC", "FITC"),
                           cell   = TRUE,
                           dim    = c(8, 12),
                           legend = TRUE,
                           circle = 12, ...) {
+  
+  if (!class(data) == "data.frame")
+    stop("data should be a data frame.")
+  if (!class(param) == "character")
+    stop("param should be a character.")
+  if (!all(param %in% colnames(data)))
+    stop("parameter name should match.")
   
   # 1. Plate template
   plaTem <- data %>%
@@ -141,7 +158,7 @@ explore_plate <- function(data,
   
   # 3. Plate visual
   result <- data %>%
-    select(IdxRow, IdxCol, vars) %>%
+    select(IdxRow, IdxCol, param) %>%
     left_join(., cellNb, by = c("IdxRow", "IdxCol")) %>% 
     group_by(IdxRow, IdxCol) %>% 
     summarise_if(is.numeric, median) %>% 

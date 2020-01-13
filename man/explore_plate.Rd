@@ -6,7 +6,7 @@
 \usage{
 explore_plate(
   data,
-  vars = c("IdxRow", "IdxCol"),
+  param = c("APC", "FITC"),
   cell = TRUE,
   dim = c(8, 12),
   legend = TRUE,
@@ -15,9 +15,9 @@ explore_plate(
 )
 }
 \arguments{
-\item{data}{An indexed `data.frame` or `tibble` object}
+\item{data}{An indexed `data.frame` object}
 
-\item{vars}{Features to be displayed as MFI}
+\item{param}{Features to be displayed as MFI}
 
 \item{cell}{Display or not cell number values}
 
@@ -41,9 +41,9 @@ for each well.
 \examples{
 library(tidyverse)
 
-explore_plate(indexARIA, vars = c("APC", "FITC", "PerCP", "PI"))
+explore_plate(indexARIA, param = c("APC", "FITC", "PerCP", "PI"))
 
 # Remove the legend
-explore_plate(indexARIA, vars = c("APC", "FITC", "PerCP", "PI"), legend = FALSE)
+explore_plate(indexARIA, param = c("APC", "FITC", "PerCP", "PI"), legend = FALSE)
 
 }

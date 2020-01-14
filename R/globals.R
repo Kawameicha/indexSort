@@ -1,4 +1,5 @@
 utils::globalVariables(c(".",
+                         "Idx",
                          "IdxCol",
                          "IdxRow",
                          "Sort.Classifier",

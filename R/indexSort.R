@@ -7,7 +7,9 @@
 #'
 #' @param data An index sorted .fcs file
 #' @param sorter Specify the cell sorter. Possible values are `aria`,  
-#' `symphony`, `influx`, `jazz`, `astrios`.
+#' `symphony`, `influx`, `jazz`, `astrios`. If `auto` (default) will  
+#'  use a regular expression to identify the sorter based on the $CYT  
+#'  keyword.
 #' @param ... Extra arguments, not used
 #'
 #' @return A `data.frame` object
@@ -25,11 +27,12 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_split
+#' @importFrom tidyr separate
 #'
 #' @export
 
 retrieve_index <- function(data,
-                           sorter = "aria", ...) {
+                           sorter = "auto", ...) {
   
   if (!class(data) == "flowFrame")
     stop("data should be a flowframe.")
@@ -37,6 +40,16 @@ retrieve_index <- function(data,
     stop("CYT is missing, select one.")
   if (!sorter %in% c("auto", "aria", "symphony", "influx", "jazz", "astrios"))
     stop("sorter isn't a valid value.")
+  if (sorter == "auto") {
+    sorter = case_when(grepl("Aria", data@description$`$CYT`) ~ "aria",
+                       grepl("Symphony", data@description$`$CYT`) ~ "symphony",
+                       grepl("Influx", data@description$`$CYT`) ~ "influx",
+                       grepl("Jazz", data@description$`$CYT`) ~ "jazz",
+                       grepl("Astrios", data@description$`$CYT`) ~ "astrios",
+                       TRUE ~ as.character("Unknown"))
+  }
+  if (sorter == "Unknown")
+    stop("the sorter isn't supported.")
   
   if (sorter %in% c("aria", "symphony")) { 
     
@@ -48,10 +61,11 @@ retrieve_index <- function(data,
       unlist 
     
     # 1.2. Generate result 
-    result <- data.frame(IdxRow = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\1", indSor[indSor != ""])), 
-                         IdxCol = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\2", indSor[indSor != ""]))) %>% 
+    result <- #data.frame(IdxRow = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\1", indSor[indSor != ""])), 
+              #           IdxCol = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\2", indSor[indSor != ""]))) %>% 
+      data.frame(Idx = indSor[indSor != ""]) %>% separate(Idx, c("IdxRow", "IdxCol")) %>% 
       mutate(IdxRow, IdxRow = rawToChar(as.raw(65 + as.integer(.[, "IdxRow"])), multiple = TRUE)) %>% 
-      mutate(IdxCol, IdxCol = formatC((IdxCol + 1), width = 2, flag = 0)) %>% 
+      mutate(IdxCol, IdxCol = formatC((as.integer(IdxCol) + 1), width = 2, flag = 0)) %>% 
       bind_cols(., data.frame(data@exprs)) 
     
     } else if (sorter %in% c("influx", "jazz")) { 

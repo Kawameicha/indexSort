@@ -4,13 +4,15 @@
 \alias{retrieve_index}
 \title{Retrieve Index Sorted Data for a Given Cell Sorter}
 \usage{
-retrieve_index(data, sorter = "aria", ...)
+retrieve_index(data, sorter = "auto", ...)
 }
 \arguments{
 \item{data}{An index sorted .fcs file}
 
 \item{sorter}{Specify the cell sorter. Possible values are `aria`,
-`symphony`, `influx`, `jazz`, `astrios`.}
+`symphony`, `influx`, `jazz`, `astrios`. If `auto` (default) will  
+ use a regular expression to identify the sorter based on the $CYT  
+ keyword.}
 
 \item{...}{Extra arguments, not used}
 }

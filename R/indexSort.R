@@ -1,6 +1,6 @@
 #' @title Retrieve Index Sorted Data for a Given Cell Sorter
 #'
-#' @description The `retrieve_index` was designed in order to give  
+#' @description The \code{retrieve_index} was designed in order to give  
 #' researchers the ability to automatically gate wells from .fcs data  
 #' generated using various cell sorters. It will generate parameters  
 #' corresponding to the `x` and `y` axes (IdxRow and IdxCol).
@@ -114,10 +114,10 @@ retrieve_index <- function(data,
 
 #' @title Plot a Plate Visual from Index Sorted Data
 #'
-#' @description The `explore_plate` is used to generate a set of illustrations 
-#' that automatically display the Median Fluorescent Intensity (MFI) per well for 
-#' the selected parameters. Additionally, the number of cells will be displayed 
-#' for each well.
+#' @description The \code{explore_plate} is used to generate a set of 
+#' illustrations that automatically display the Median Fluorescent 
+#' Intensity (MFI) per well for the selected parameters. Additionally, 
+#' the number of cells will be displayed for each well.
 #'
 #' @param data An indexed `data.frame` object
 #' @param param Features to be displayed as MFI

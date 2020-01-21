@@ -3,7 +3,9 @@ Type: Package
 Title: Retrieve Index Sorted Data and Visually Explore .fcs Date Files
 Version: 0.1.5
 Authors@R: person("Christoph", "Freier", , "christoph@freier.fr", c("aut", "cre"))
-Description: This package contains functions to retrieve index sorted data and visually explore .fcs date files from various cell sorters.
+Description: This package contains functions to retrieve index 
+    sorted data and visually explore .fcs date files from 
+    various cell sorters.
 Depends:
     R (>= 3.2)
 License: Apache License 2.0 | file LICENSE

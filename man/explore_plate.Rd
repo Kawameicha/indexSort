@@ -33,10 +33,10 @@ explore_plate(
 A `ggplot` object
 }
 \description{
-The `explore_plate` is used to generate a set of illustrations 
-that automatically display the Median Fluorescent Intensity (MFI) per well for 
-the selected parameters. Additionally, the number of cells will be displayed 
-for each well.
+The \code{explore_plate} is used to generate a set of 
+illustrations that automatically display the Median Fluorescent 
+Intensity (MFI) per well for the selected parameters. Additionally, 
+the number of cells will be displayed for each well.
 }
 \examples{
 library(tidyverse)

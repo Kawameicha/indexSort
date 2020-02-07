@@ -6,4 +6,6 @@ utils::globalVariables(c(".",
                          "Well",
                          "bits",
                          "inputFCS",
-                         "value"))
+                         "value",
+                         "Row",
+                         "Column"))

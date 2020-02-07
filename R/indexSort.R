@@ -27,6 +27,7 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_split
+#' @importFrom tidyr drop_na
 #' @importFrom tidyr separate
 #'
 #' @export
@@ -51,7 +52,7 @@ retrieve_index <- function(data,
   if (sorter == "Unknown")
     stop("the sorter isn't supported.")
   
-  if (sorter %in% c("aria", "symphony")) { 
+  if (sorter %in% c("aria")) { 
     
     # 1.1. Generate list 
     indSor <- rev(grep("INDEX SORTING LOCATIONS", names(data@description))) %>% 
@@ -102,9 +103,21 @@ retrieve_index <- function(data,
                IdxCol = sapply(bits, function(x) sum(x[21], x[22]*2, x[23]*4 + x[24]*8 + x[25]*16 + x[26]*32))) %>%
         mutate(IdxRow = rawToChar(as.raw(64 + as.integer(.[, "IdxRow"])), multiple = TRUE)) %>%
         mutate(IdxCol = formatC((IdxCol), width = 2, flag = 0)) %>%
-        mutate(IdxRow = ifelse(IdxRow == "@", NA_real_,  IdxRow)) %>%
-        mutate(IdxCol = ifelse(IdxCol == "00", NA_real_,  IdxCol)) %>% 
-        select(IdxRow, IdxCol, everything(), -bits)
+        mutate_at(vars(IdxRow, IdxCol), ~replace(., . == "@" | . == "00", NA)) %>%
+        #mutate(IdxRow = ifelse(IdxRow == "@", NA_real_,  IdxRow)) %>%
+        #mutate(IdxCol = ifelse(IdxCol == "00", NA_real_,  IdxCol)) %>% 
+        select(IdxRow, IdxCol, everything(), -bits) %>% 
+        drop_na()
+      
+    } else if (sorter %in% c("symphony")) {
+      
+      # 3.1. Generate result
+      result <- data.frame(inputFCS@exprs) %>% 
+        mutate(IdxRow = rawToChar(as.raw(64 + as.integer(.[, "Row"])), multiple = TRUE)) %>% 
+        mutate(IdxCol = formatC(as.integer(Column), width = 2, flag = 0)) %>% 
+        mutate_at(vars(IdxRow, IdxCol), ~replace(., . == -1 | . == "?", NA)) %>% 
+        select(IdxRow, IdxCol, everything(), -Row, -Column) %>% 
+        drop_na()
       
     }
   

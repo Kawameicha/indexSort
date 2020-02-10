@@ -1,8 +1,11 @@
+.DS_Store
+indexSort.Rproj
+explore_plate.png
+CODE_OF_CONDUCT.md
+
 # History files
 .Rhistory
 .Rapp.history
-.DS_Store
-indexSort.Rproj
 
 # Session Data files
 .RData

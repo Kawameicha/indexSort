@@ -24,7 +24,7 @@ devtools::install_github("Kawameicha/indexSort")
   * MoFlo Astrios<sup>TM</sup>
 * Display median fluorescence and number of cells per well with `explore_plate()`.
 
-![](./explore_plate.png)
+![](https://github.com/Kawameicha/project_files/blob/master/explore_plate.png)
 
 ## Usage 
 
@@ -40,7 +40,7 @@ explore_plate(result, vars = c("APC.A", "FITC.A", "Pacific.Blue.A", "Time"))
 
 ## Community Guidelines
 
-This project is released with a [Code of Conduct](https://github.com/Kawameicha/indexSort/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/Kawameicha/indexSort/issues).
+This project is released with a [Code of Conduct](https://github.com/Kawameicha/project_files/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/Kawameicha/indexSort/issues).
 
 ## License
 

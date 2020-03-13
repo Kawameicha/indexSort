@@ -27,7 +27,9 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_split
+#' @importFrom tibble rownames_to_column
 #' @importFrom tidyr drop_na
+#' @importFrom tidyr extract
 #' @importFrom tidyr separate
 #'
 #' @export
@@ -55,11 +57,18 @@ retrieve_index <- function(data,
   if (sorter %in% c("aria")) { 
     
     # 1.1. Generate list 
-    indSor <- rev(grep("INDEX SORTING LOCATIONS", names(data@description))) %>% 
+    indSor <- data.frame(keyword = names(data@description)) %>% 
+      rownames_to_column() %>% 
+      filter(grepl("INDEX SORTING LOCATIONS", keyword)) %>% 
+      extract(keyword, c("keyword", "position"), "(INDEX SORTING LOCATIONS)_(.*)") %>% 
+      mutate_at(.vars = vars(rowname, position), as.numeric) %>% 
+      arrange(position) %>% 
+      select(rowname) %>% 
+      unlist() %>% 
       sapply(., function(x) unlist(data@description[[x]])) %>% 
       paste0 %>% 
       str_split(";") %>% 
-      unlist 
+      unlist
     
     # 1.2. Generate result 
     result <- #data.frame(IdxRow = as.integer(gsub("([0-9]?[0-9]),([0-9]?[0-9])", "\\1", indSor[indSor != ""])), 

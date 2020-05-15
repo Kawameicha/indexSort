@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![Travis build status](https://api.travis-ci.org/Kawameicha/indexSort.svg?branch=master)](https://travis-ci.org/Kawameicha/indexSort)
+<!-- badges: end -->
+
 # indexSort
 
 ## Overview

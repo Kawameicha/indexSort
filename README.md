@@ -1,5 +1,6 @@
 <!-- badges: start -->
-[![Travis build status](https://api.travis-ci.org/Kawameicha/indexSort.svg?branch=master)](https://travis-ci.org/Kawameicha/indexSort)
+![Travis build status](https://api.travis-ci.org/Kawameicha/indexSort.svg?branch=master)](https://travis-ci.org/Kawameicha/indexSort)
+![R-CMD-check](https://github.com/Kawameicha/indexSort/workflows/R-CMD-check/badge.svg)
 <!-- badges: end -->
 
 # indexSort

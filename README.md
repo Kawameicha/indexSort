@@ -1,6 +1,5 @@
 <!-- badges: start -->
-[![Travis build status](https://api.travis-ci.org/Kawameicha/indexSort.svg?branch=master)](https://travis-ci.org/Kawameicha/indexSort)
-![R-CMD-check](https://github.com/Kawameicha/indexSort/workflows/R-CMD-check/badge.svg)
+[![Travis build status](https://api.travis-ci.org/Kawameicha/indexSort.svg?branch=master)](https://travis-ci.org/Kawameicha/indexSort.svg?branch=master)
 ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 <!-- badges: end -->
 
@@ -8,7 +7,7 @@
 
 ## Overview
 
-This package contains functions to retrieve index sorted data and visually explore .fcs date files from various cell sorters.
+This package contains functions to retrieve index sorted data and visually explore .fcs data files from various cell sorters.
 
 ## Installation
 
